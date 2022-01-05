@@ -3,5 +3,33 @@
 {% block title %}<title>Home Page</title>{% endblock %}
 
 {% block content %}
-<h1>Hello world!</h1>
+
+<div class="container">
+	<div class="row">
+
+	{% if all_addresses %}
+		{% for record in all_addresses %}
+			<div class="col-sm">
+				<div class="card" style="width: 18rem;">
+				    <div class="card-body">
+				    <h5 class="card-title">{{record.name}}</h5>
+				    <p class="card-text">
+						 {{record.email}}<br>
+						{{record.phone}}<br>
+						{{record.address}}<br>
+						{{record.city}}<br>
+						{{record.state}}<br>
+						{{record.zip}}
+				    </p>
+				    <a href="{% url 'edit' record.id %}" class="btn btn-secondary">Edit</a>
+				  </div>
+				</div>
+				<br>
+			</div>
+
+
+		{% endfor %}
+	{% endif %}
+
+</div></div>
 {% endblock %}
